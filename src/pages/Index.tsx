@@ -16,7 +16,7 @@ const Index = () => {
   } = useChat();
 
   return (
-    <div className="flex flex-col h-screen bg-chat-background">
+    <div className="flex flex-col h-screen" style={{backgroundColor: 'white', background: 'white'}}>
       <ChatHeader />
       
       <main className="flex-1 flex flex-col overflow-hidden">

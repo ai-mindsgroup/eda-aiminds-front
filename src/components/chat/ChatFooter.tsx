@@ -9,7 +9,7 @@ const ChatFooter = () => {
           <span>Desenvolvido com</span>
           <Heart className="h-3 w-3 text-red-500 fill-current" />
           <span>pelo grupo</span>
-          <strong className="text-foreground">IA Minds</strong>
+          <strong className="text-foreground">AI Minds</strong>
         </div>
       </div>
     </footer>

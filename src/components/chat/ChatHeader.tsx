@@ -10,7 +10,7 @@ const ChatHeader = () => {
           </div>
           <div className="text-center">
             <h1 className="text-xl font-bold text-foreground">
-              IA Minds - CSV Multi-Agent Analyzer
+              AI Minds - CSV Multi-Agent Analyzer
             </h1>
             <p className="text-sm text-muted-foreground">
               Curso de Agentes Autônomos (I2A2)

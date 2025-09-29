@@ -80,6 +80,7 @@ export const useChat = () => {
     toast({
       title: "Arquivo carregado",
       description: `${file.name} foi carregado com sucesso.`,
+      variant: "success",
     });
   }, [addMessage]);
 
@@ -90,6 +91,7 @@ export const useChat = () => {
     toast({
       title: "Arquivo removido",
       description: "O histórico de conversas foi limpo.",
+      variant: "info",
     });
   }, []);
 

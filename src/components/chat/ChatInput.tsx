@@ -38,7 +38,7 @@ const ChatInput = ({ onSendMessage, isLoading, disabled = false }: ChatInputProp
   const canSend = message.trim() && !isLoading && !disabled;
 
   return (
-    <div className="sticky bottom-0 bg-background/95 backdrop-blur-sm border-t border-border">
+    <div className="sticky bottom-0 bg-background/98 backdrop-blur-sm border-t border-border shadow-lg">
       <div className="container mx-auto px-4 py-4">
         <form onSubmit={handleSubmit} className="flex gap-3 items-end">
           <div className="flex-1 relative">
@@ -72,7 +72,7 @@ const ChatInput = ({ onSendMessage, isLoading, disabled = false }: ChatInputProp
             whileTap={{ scale: canSend ? 0.98 : 1 }}
             className={`flex items-center justify-center w-12 h-12 rounded-xl transition-all duration-200 ${
               canSend
-                ? "bg-primary hover:bg-primary-hover text-primary-foreground shadow-md hover:shadow-lg"
+                ? "bg-primary hover:bg-primary-hover text-primary-foreground shadow-sm hover:shadow-md"
                 : "bg-muted text-muted-foreground cursor-not-allowed"
             }`}
           >
