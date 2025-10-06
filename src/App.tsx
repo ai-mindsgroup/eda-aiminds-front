@@ -11,25 +11,14 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <style>
-        {`
-          * { 
-            background-color: white !important; 
-            background: white !important;
-          }
-          html, body, #root { 
-            background-color: white !important; 
-            background: white !important;
-          }
-          div, main, section { 
-            background-color: white !important; 
-            background: white !important;
-          }
-        `}
-      </style>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter
+        future={{
+          v7_startTransition: true,
+          v7_relativeSplatPath: true,
+        }}
+      >
         <Routes>
           <Route path="/" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
