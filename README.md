@@ -1,5 +1,7 @@
 # CSV Chat Flow - EDA AI Minds
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Sistema inteligente de análise de dados CSV com chat interativo e IA.
 
 ## 🚀 Quick Start
@@ -125,7 +127,9 @@ csv-chat-flow/
 
 ## 📄 Licença
 
-Este projeto é privado e pertence à AI Minds Group.
+Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+Copyright (c) 2025 AI Minds Group
 
 ## 🔗 Links Úteis
 
