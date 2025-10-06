@@ -4,41 +4,60 @@ Documentação completa do projeto, troubleshooting e guias de desenvolvimento.
 
 ## 📑 Índice
 
-### 🔧 Resolução de Problemas
+### � Início Rápido
 
-1. **[Backend Fix Instructions](./BACKEND_FIX_INSTRUCTIONS.md)** ⭐ **IMPORTANTE**
+1. **[Integration Complete](./INTEGRATION_COMPLETE.md)** ✅
+   - Resumo completo da integração com Google Drive
+   - Status do projeto e features implementadas
+   - Próximos passos
+
+### �🔧 Resolução de Problemas
+
+2. **[Resolver Erro 403 AGORA](./RESOLVER_ERRO_403_AGORA.md)** ⚡ **URGENTE**
+   - Solução rápida para erro 403: access_denied
+   - 10 passos práticos com screenshots
+   - **Leia isto se está com erro de autorização Google!**
+
+3. **[Backend Fix Instructions](./BACKEND_FIX_INSTRUCTIONS.md)** ⭐ **IMPORTANTE**
    - Como corrigir o backend para invocar agentes corretamente
    - Passo a passo completo com exemplos de código
    - Testes de validação
    - **Leia isto se os agentes não estão analisando os dados!**
 
-2. **[Why Agents Not Working](./WHY_AGENTS_NOT_WORKING.md)** 🔍
+4. **[Why Agents Not Working](./WHY_AGENTS_NOT_WORKING.md)** 🔍
    - Diagnóstico completo do problema
    - Checklist de verificação
    - Arquitetura esperada vs atual
    - Testes para identificar o problema
 
-3. **[Network Error Fix](./NETWORK_ERROR_FIX.md)** 🌐
+5. **[Network Error Fix](./NETWORK_ERROR_FIX.md)** 🌐
    - Correção de erros de rede
    - Sistema de cache e sincronização
    - Interceptors do Axios explicados
 
-4. **[Console Warnings Fix](./CONSOLE_WARNINGS_FIX.md)** ⚠️
+6. **[Console Warnings Fix](./CONSOLE_WARNINGS_FIX.md)** ⚠️
    - Correção de warnings do React Router
    - Health check timing otimizado
    - Console limpo e profissional
 
 ### ⚙️ Configuração
 
-5. **[Port Detection](./PORT_DETECTION.md)** 🔄
+7. **[Port Detection](./PORT_DETECTION.md)** 🔄
    - Como funciona a detecção automática de porta
    - Configuração via variável de ambiente
    - Troubleshooting de conexão
    - Testes e validação
 
+8. **[Pasta Atualizada](./PASTA_ATUALIZADA.md)** 📁
+   - Informações sobre atualização do ID da pasta Google Drive
+   - Novo folder ID e instruções
+
 ---
 
 ## 🎯 Guia Rápido por Problema
+
+### "Erro 403: access_denied do Google Drive"
+→ Leia: **[Resolver Erro 403 AGORA](./RESOLVER_ERRO_403_AGORA.md)** ⚡
 
 ### "Os agentes não estão analisando meus dados CSV"
 → Leia: **[Backend Fix Instructions](./BACKEND_FIX_INSTRUCTIONS.md)** e **[Why Agents Not Working](./WHY_AGENTS_NOT_WORKING.md)**
@@ -48,6 +67,9 @@ Documentação completa do projeto, troubleshooting e guias de desenvolvimento.
 
 ### "Backend não está sendo detectado"
 → Leia: **[Port Detection](./PORT_DETECTION.md)**
+
+### "Arquivos não estão indo para a pasta certa no Drive"
+→ Leia: **[Pasta Atualizada](./PASTA_ATUALIZADA.md)** 📁
 
 ### "Console cheio de warnings"
 → Leia: **[Console Warnings Fix](./CONSOLE_WARNINGS_FIX.md)**

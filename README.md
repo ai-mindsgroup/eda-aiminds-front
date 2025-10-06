@@ -24,11 +24,20 @@ A aplicação estará disponível em `http://localhost:8080`
 ## 🎯 Funcionalidades
 
 - ✅ Upload de arquivos CSV
+- ✅ **Upload automático para Google Drive** 💾 *(opcional - funciona sem configuração)*
 - ✅ Chat interativo com IA para análise de dados
 - ✅ Detecção automática de porta do backend
 - ✅ Visualização de arquivos processados
 - ✅ Métricas em tempo real
 - ✅ Interface moderna e responsiva
+
+### 📍 Status do Google Drive
+
+> ⚠️ **Atenção**: O Google Drive **não está configurado** no momento. Os arquivos serão processados normalmente, mas não serão salvos no Drive.
+> 
+> 🚀 **Quer configurar?** Siga o guia rápido: **[docs/GOOGLE_DRIVE_QUICK_START.md](./docs/GOOGLE_DRIVE_QUICK_START.md)** (5 minutos)
+>
+> ℹ️ **Prefere não configurar agora?** Sem problemas! A aplicação funciona perfeitamente sem essa funcionalidade.
 
 ## 🏗️ Tecnologias
 
@@ -48,10 +57,25 @@ Crie um arquivo `.env` baseado no `.env.example`:
 # Backend API (opcional - detecta automaticamente se não especificado)
 VITE_API_URL=http://localhost:8000
 
+# Google Drive API (obrigatório para upload de arquivos)
+VITE_GOOGLE_CLIENT_ID=your-client-id.apps.googleusercontent.com
+VITE_GOOGLE_API_KEY=your-api-key
+VITE_GOOGLE_DRIVE_FOLDER_ID=1TZRAYnvGAQt--Dp3jWuPEV36bVVLpv2M
+
 # Supabase (se necessário)
 VITE_SUPABASE_URL=your_supabase_url
 VITE_SUPABASE_PUBLISHABLE_KEY=your_key
 ```
+
+### Google Drive
+
+Para configurar a integração com o Google Drive e permitir que os arquivos sejam automaticamente salvos:
+
+1. Siga o guia completo em **[docs/GOOGLE_DRIVE_SETUP.md](./docs/GOOGLE_DRIVE_SETUP.md)**
+2. Configure as credenciais no Google Cloud Console
+3. Adicione as variáveis de ambiente no arquivo `.env`
+
+**⚠️ Importante**: Sem as credenciais do Google Drive, os arquivos serão processados normalmente pelo backend, mas não serão salvos no Drive.
 
 ### Backend
 
@@ -65,6 +89,13 @@ Para mais detalhes, veja [docs/PORT_DETECTION.md](./docs/PORT_DETECTION.md)
 
 Documentação detalhada disponível na pasta [`docs/`](./docs/):
 
+### 🆕 Google Drive (Novo!)
+- **[📍 Status Atual](./docs/STATUS_GOOGLE_DRIVE.md)** - LEIA PRIMEIRO: Onde você está e o que fazer
+- **[⚡ Quick Start](./docs/GOOGLE_DRIVE_QUICK_START.md)** - Guia rápido de 5 minutos
+- **[📖 Setup Completo](./docs/GOOGLE_DRIVE_SETUP.md)** - Guia detalhado passo a passo
+- **[📋 Resumo da Integração](./docs/GOOGLE_DRIVE_INTEGRATION.md)** - Detalhes técnicos
+
+### Outros
 - **[Backend Fix Instructions](./docs/BACKEND_FIX_INSTRUCTIONS.md)** - Como corrigir o roteamento de agentes no backend
 - **[Why Agents Not Working](./docs/WHY_AGENTS_NOT_WORKING.md)** - Diagnóstico completo do problema de invocação de agentes
 - **[Port Detection](./docs/PORT_DETECTION.md)** - Como funciona a detecção automática de porta

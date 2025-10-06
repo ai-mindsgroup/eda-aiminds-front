@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import axios from '@/lib/axios';
 import { isAxiosError } from 'axios';
-import { Upload, FileText, Loader2, CheckCircle2 } from 'lucide-react';
+import { Upload, FileText, Loader2, CheckCircle2, Cloud, AlertCircle } from 'lucide-react';
 import { toast } from 'sonner';
+import { uploadToGoogleDrive, isAuthenticated, authenticateGoogle, hasValidCredentials } from '@/services/googleDriveService';
 
 interface UploadResponse {
   file_id: string;
@@ -20,6 +21,7 @@ interface FileUploaderProps {
 const FileUploader = ({ onUploadSuccess }: FileUploaderProps) => {
   const [uploading, setUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState<string>('');
+  const [driveUploadProgress, setDriveUploadProgress] = useState<number>(0);
 
   const onDrop = async (acceptedFiles: File[]) => {
     const file = acceptedFiles[0];
@@ -27,25 +29,67 @@ const FileUploader = ({ onUploadSuccess }: FileUploaderProps) => {
 
     setUploading(true);
     setUploadProgress('Enviando arquivo...');
+    setDriveUploadProgress(0);
 
     const formData = new FormData();
     formData.append('file', file);
 
     try {
+      // 1. Upload para o backend (processamento de dados)
+      setUploadProgress('Enviando para o servidor...');
       const response = await axios.post<UploadResponse>('/csv/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
 
-      setUploadProgress('Processado com sucesso!');
-      toast.success(`✅ ${response.data.filename}`, {
-        description: `${response.data.rows.toLocaleString()} linhas • ${response.data.columns} colunas processadas`,
-      });
+      // 2. Upload para o Google Drive (armazenamento)
+      // Verifica se as credenciais do Google Drive estão configuradas
+      if (hasValidCredentials()) {
+        setUploadProgress('Salvando no Google Drive...');
+        
+        try {
+          // Verifica autenticação do Google
+          if (!isAuthenticated()) {
+            setUploadProgress('Solicitando autorização do Google...');
+            await authenticateGoogle();
+          }
+
+          // Faz upload para o Google Drive
+          const driveResult = await uploadToGoogleDrive(file, (progress) => {
+            setDriveUploadProgress(progress);
+          });
+
+          console.log('Arquivo salvo no Google Drive:', driveResult);
+          
+          setUploadProgress('Processado com sucesso!');
+          toast.success(`✅ ${response.data.filename}`, {
+            description: `${response.data.rows.toLocaleString()} linhas • ${response.data.columns} colunas processadas | 💾 Salvo no Drive`,
+          });
+        } catch (driveError) {
+          console.error('Erro ao salvar no Google Drive:', driveError);
+          // Não bloqueia o fluxo se o Google Drive falhar
+          toast.warning(`⚠️ ${response.data.filename}`, {
+            description: `Processado com sucesso, mas não foi possível salvar no Google Drive. ${response.data.rows.toLocaleString()} linhas • ${response.data.columns} colunas`,
+          });
+        }
+      } else {
+        // Credenciais não configuradas - notifica o usuário
+        console.warn('Credenciais do Google Drive não configuradas');
+        setUploadProgress('Processado com sucesso!');
+        toast.success(`✅ ${response.data.filename}`, {
+          description: `${response.data.rows.toLocaleString()} linhas • ${response.data.columns} colunas processadas`,
+        });
+        toast.info('ℹ️ Google Drive não configurado', {
+          description: 'Configure as credenciais no .env para salvar arquivos no Drive. Veja docs/GOOGLE_DRIVE_SETUP.md',
+          duration: 5000,
+        });
+      }
       
       setTimeout(() => {
         onUploadSuccess(response.data.file_id, response.data.filename);
         setUploadProgress('');
+        setDriveUploadProgress(0);
       }, 1500);
     } catch (error) {
       console.error('Erro no upload:', error);
@@ -59,6 +103,7 @@ const FileUploader = ({ onUploadSuccess }: FileUploaderProps) => {
         description: errorText,
       });
       setUploadProgress('');
+      setDriveUploadProgress(0);
     } finally {
       setUploading(false);
     }
@@ -119,9 +164,15 @@ const FileUploader = ({ onUploadSuccess }: FileUploaderProps) => {
                   <div className="text-sm text-muted-foreground mt-2">
                     ou clique para selecionar
                   </div>
+                  {driveUploadProgress > 0 && driveUploadProgress < 100 && (
+                    <div className="flex items-center gap-2 mt-2 text-xs text-blue-600">
+                      <Cloud className="h-4 w-4" />
+                      <span>Google Drive: {driveUploadProgress}%</span>
+                    </div>
+                  )}
                 </div>
                 <div className="text-xs text-muted-foreground bg-muted px-3 py-1 rounded-full">
-                  Apenas arquivos .csv
+                  Apenas arquivos .csv • Salvo no Google Drive
                 </div>
               </>
             )}

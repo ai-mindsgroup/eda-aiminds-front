@@ -4,6 +4,7 @@ import FileUploader from '@/components/FileUploader';
 import ChatInterface from '@/components/ChatInterface';
 import FilesList from '@/components/FilesList';
 import HealthStatus from '@/components/HealthStatus';
+import GoogleDriveStatus from '@/components/GoogleDriveStatus';
 import { Brain } from 'lucide-react';
 
 const Index = () => {
@@ -48,6 +49,7 @@ const Index = () => {
           <h2 className="text-2xl font-semibold text-foreground">
             📤 Upload de CSV
           </h2>
+          <GoogleDriveStatus />
           <FileUploader onUploadSuccess={handleUploadSuccess} />
         </section>
 
