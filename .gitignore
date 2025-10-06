@@ -22,7 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-# UX/UI Reports and Documentation (local only)
-ux-analysis-report.md
-design-changes-report.md
