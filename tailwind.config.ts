@@ -19,32 +19,21 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        
-        /* Chat interface colors */
-        "chat-background": "hsl(var(--chat-background))",
-        "message-user": "hsl(var(--message-user))",
-        "message-user-foreground": "hsl(var(--message-user-foreground))",
-        "message-agent": "hsl(var(--message-agent))",
-        "message-agent-foreground": "hsl(var(--message-agent-foreground))",
-        
-        /* Upload zone */
-        "upload-border": "hsl(var(--upload-border))",
-        "upload-background": "hsl(var(--upload-background))",
-        "input-border": "hsl(var(--input-border))",
-        
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
-          hover: "hsl(var(--primary-hover))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
-          hover: "hsl(var(--secondary-hover))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
+        },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",

@@ -2,123 +2,95 @@
 @tailwind components;
 @tailwind utilities;
 
-/* CSV Analyst AI - Design system with clean professional colors - Updated */
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
 
 @layer base {
   :root {
-    /* Base colors - improved contrast and readability */
-    --background: 249 250 251;  /* Softer background */
-    --foreground: 15 23% 42%;   /* Better contrast for text */
+    --background: 210 20% 98%;
+    --foreground: 222 47% 11%;
 
-    /* Chat interface colors - enhanced readability */
-    --chat-background: 251 252 253;
-    --message-user: 142 71% 45%;      /* Updated green */
-    --message-user-foreground: 0 0% 100%;
-    --message-agent: 0 0% 100%;
-    --message-agent-foreground: 15 23% 42%;
-
-    /* Card and surface colors - subtle elevation */
     --card: 0 0% 100%;
-    --card-foreground: 15 23% 42%;
+    --card-foreground: 222 47% 11%;
 
-    /* Brand colors - modern and professional */
-    --primary: 142 71% 45%;        /* Softer green - more professional */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 142 71% 41%;
 
-    /* Secondary - calm blue */
-    --secondary: 217 32% 17%;      /* Deep navy blue - more sophisticated */
-    --secondary-foreground: 0 0% 100%;
-    --secondary-hover: 217 32% 21%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
 
-    /* Accent - subtle blue-gray instead of orange */
-    --accent: 217 12% 84%;         /* Soft blue-gray - much more subtle */
-    --accent-foreground: 217 32% 17%;
+    --muted: 214 32% 91%;
+    --muted-foreground: 215 16% 47%;
 
-    /* Neutral tones - improved hierarchy */
-    --muted: 210 20% 94%;
-    --muted-foreground: 215.4 16.3% 44%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
 
-    /* Interactive elements - better accessibility */
-    --border: 210 20% 90%;
-    --input: 0 0% 100%;
-    --input-border: 210 20% 87%;
-    --ring: 142 71% 45%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    /* Upload zone - subtle and professional */
-    --upload-border: 142 71% 45%;
-    --upload-background: 142 71% 97%;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
 
-    /* Gradients - updated with new colors */
-    --gradient-primary: linear-gradient(135deg, hsl(142 71% 45%), hsl(142 71% 49%));
-    --gradient-secondary: linear-gradient(135deg, hsl(217 32% 17%), hsl(217 32% 21%));
-    --gradient-accent: linear-gradient(135deg, hsl(217 12% 84%), hsl(217 12% 88%));
-
-    /* Animations */
-    --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 60%;
 
     --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
+    --sidebar-foreground: 240 5% 26%;
+    --sidebar-primary: 240 6% 10%;
     --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
+    --sidebar-accent: 240 5% 96%;
+    --sidebar-accent-foreground: 240 6% 10%;
     --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 217 91% 60%;
   }
 
   .dark {
-    --background: 215 28% 17%;
+    --background: 222 47% 5%;
     --foreground: 210 40% 98%;
 
-    --chat-background: 215 25% 15%;
-    --message-user: 142 76% 36%;
-    --message-user-foreground: 0 0% 100%;
-    --message-agent: 215 28% 20%;
-    --message-agent-foreground: 210 40% 98%;
-
-    --card: 215 28% 17%;
+    --card: 222 47% 5%;
     --card-foreground: 210 40% 98%;
 
-    --primary: 142 71% 45%;
+    --popover: 222 47% 5%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 142 71% 49%;
 
-    --secondary: 217 32% 17%;
-    --secondary-foreground: 0 0% 100%;
-    --secondary-hover: 217 32% 21%;
+    --secondary: 217 33% 18%;
+    --secondary-foreground: 210 40% 98%;
 
-    --accent: 217 12% 20%;
-    --accent-foreground: 217 12% 84%;
+    --muted: 217 33% 18%;
+    --muted-foreground: 215 20% 65%;
 
-    --muted: 215 28% 20%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217 33% 18%;
+    --accent-foreground: 210 40% 98%;
 
-    --border: 215 28% 20%;
-    --input: 215 28% 20%;
-    --input-border: 215 28% 25%;
-    --ring: 142 76% 36%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
 
-    --upload-border: 142 76% 36%;
-    --upload-background: 142 76% 8%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --border: 217 33% 18%;
+    --input: 217 33% 18%;
+    --ring: 217 91% 60%;
+    
+    --sidebar-background: 240 6% 10%;
+    --sidebar-foreground: 240 5% 96%;
+    --sidebar-primary: 217 91% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 240 4% 16%;
+    --sidebar-accent-foreground: 240 5% 96%;
+    --sidebar-border: 240 4% 16%;
+    --sidebar-ring: 217 91% 60%;
   }
 }
 
@@ -128,159 +100,6 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    background-color: white !important;
-    background: white !important;
-  }
-
-  /* FORCE OVERRIDE ALL POSSIBLE YELLOW/ORANGE CLASSES */
-  html, body, #root, 
-  .bg-yellow-100, .bg-yellow-200, .bg-yellow-300, .bg-yellow-400, .bg-yellow-500,
-  .bg-orange-100, .bg-orange-200, .bg-orange-300, .bg-orange-400, .bg-orange-500,
-  .bg-amber-100, .bg-amber-200, .bg-amber-300, .bg-amber-400, .bg-amber-500,
-  [style*="yellow"], [style*="orange"], [style*="amber"],
-  *[class*="yellow"], *[class*="orange"], *[class*="amber"] {
-    background-color: hsl(249, 250, 251) !important;
-  }
-
-  /* Force specific selectors */
-  div, main, section, article {
-    background-color: inherit;
-  }
-
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-muted;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-border rounded-full;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-muted-foreground;
+    @apply bg-background text-foreground;
   }
 }
-
-@layer components {
-  /* Force override any yellow/orange colors */
-  .bg-accent,
-  [class*="bg-accent"] {
-    background-color: hsl(217 12% 84%) !important;
-  }
-  
-  .text-accent-foreground,
-  [class*="text-accent-foreground"] {
-    color: hsl(217 32% 17%) !important;
-  }
-
-  /* Force correct background colors */
-  .bg-chat-background {
-    background-color: hsl(251 252 253) !important;
-  }
-  
-  .bg-background {
-    background-color: hsl(249 250 251) !important;
-  }
-  
-  .bg-upload-background {
-    background-color: hsl(142 71% 97%) !important;
-  }
-
-  /* Message bubbles */
-  .message-user {
-    @apply bg-message-user text-message-user-foreground;
-  }
-
-  .message-agent {
-    @apply bg-message-agent text-message-agent-foreground border border-border;
-  }
-
-  /* Upload zone */
-  .upload-zone {
-    @apply bg-upload-background border-2 border-dashed border-upload-border;
-    transition: var(--transition-smooth);
-  }
-
-  .upload-zone:hover {
-    @apply border-primary;
-    background: hsl(var(--upload-background) / 0.7);
-  }
-
-  /* Custom animations */
-  .animate-fade-up {
-    animation: fade-up 0.3s ease-out forwards;
-  }
-
-  .animate-bounce-in {
-    animation: bounce-in 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
-  }
-}
-
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes bounce-in {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* ULTIMATE OVERRIDE - HIGHEST PRIORITY */
-html, body, #root, 
-div, main, section, article,
-.bg-yellow-100, .bg-yellow-200, .bg-yellow-300, .bg-yellow-400, .bg-yellow-500,
-.bg-orange-100, .bg-orange-200, .bg-orange-300, .bg-orange-400, .bg-orange-500,
-.bg-amber-100, .bg-amber-200, .bg-amber-300, .bg-amber-400, .bg-amber-500 {
-  background-color: white !important;
-  background: white !important;
-}
-
-/* Override any inline styles */
-[style*="background-color: yellow"],
-[style*="background-color: orange"],
-[style*="background: yellow"],
-[style*="background: orange"],
-[style*="background-color: #FFFF"],
-[style*="background-color: rgb(255, 255, 0)"] {
-  background-color: white !important;
-  background: white !important;
-}
-
-/* FORCE WHITE ON EVERYTHING */
-* {
-  background-color: white !important;
-  background: white !important;
-}
-
-/* Allow specific elements to have different backgrounds */
-.bg-primary { background-color: #16a34a !important; }
-.bg-secondary { background-color: #1f2937 !important; }
-.bg-muted { background-color: #f8fafc !important; }
-
-/* Toast success variant - force green colors */
-.border-green-500 { border-color: #22c55e !important; }
-.bg-green-50 { background-color: #f0fdf4 !important; }
-.text-green-900 { color: #14532d !important; }
-
-/* Toast info variant - force blue colors */
-.border-blue-500 { border-color: #3b82f6 !important; }
-.bg-blue-50 { background-color: #eff6ff !important; }
-.text-blue-900 { color: #1e3a8a !important; }
