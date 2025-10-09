@@ -116,11 +116,11 @@ const FilesList = ({ refreshTrigger }: FilesListProps) => {
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
                 <div className="flex items-center gap-1">
                   <Database className="h-4 w-4" />
-                  <span>{file.rows.toLocaleString()}</span>
+                  <span>{(file.rows ?? 0).toLocaleString()}</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <Layers className="h-4 w-4" />
-                  <span>{file.columns}</span>
+                  <span>{file.columns ?? 0}</span>
                 </div>
               </div>
             </div>

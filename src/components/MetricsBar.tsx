@@ -46,6 +46,12 @@ const MetricsBar = () => {
     );
   }
 
+  // Valores padrão para evitar erros de undefined
+  const totalFiles = metrics.total_files ?? 0;
+  const totalRows = metrics.total_rows ?? 0;
+  const totalColumns = metrics.total_columns ?? 0;
+  const status = metrics.status ?? 'Aguardando';
+
   return (
     <div className="bg-card rounded-lg shadow-sm border p-6">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -54,7 +60,7 @@ const MetricsBar = () => {
             <FileText className="h-6 w-6 text-primary" />
           </div>
           <div>
-            <div className="text-2xl font-bold text-foreground">{metrics.total_files}</div>
+            <div className="text-2xl font-bold text-foreground">{totalFiles}</div>
             <div className="text-sm text-muted-foreground">Arquivos</div>
           </div>
         </div>
@@ -64,7 +70,7 @@ const MetricsBar = () => {
             <Database className="h-6 w-6 text-primary" />
           </div>
           <div>
-            <div className="text-2xl font-bold text-foreground">{metrics.total_rows.toLocaleString()}</div>
+            <div className="text-2xl font-bold text-foreground">{totalRows.toLocaleString()}</div>
             <div className="text-sm text-muted-foreground">Linhas</div>
           </div>
         </div>
@@ -74,7 +80,7 @@ const MetricsBar = () => {
             <Layers className="h-6 w-6 text-primary" />
           </div>
           <div>
-            <div className="text-2xl font-bold text-foreground">{metrics.total_columns}</div>
+            <div className="text-2xl font-bold text-foreground">{totalColumns}</div>
             <div className="text-sm text-muted-foreground">Colunas</div>
           </div>
         </div>
@@ -84,7 +90,7 @@ const MetricsBar = () => {
             <Activity className="h-6 w-6 text-success" />
           </div>
           <div>
-            <div className="text-2xl font-bold text-success">{metrics.status}</div>
+            <div className="text-2xl font-bold text-success">{status}</div>
             <div className="text-sm text-muted-foreground">Status</div>
           </div>
         </div>
