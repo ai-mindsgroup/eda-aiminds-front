@@ -1,4 +1,34 @@
-# 📚 Documentação Técnica - CSV Chat Flow
+# 📚 Document### 🔧 Resol### 🔧 Resolução de Problemas
+
+2. **[Erro 404: Endpoint não encontrado](./ENDPOINT_404_FIX.md)** 🔴 **URGENTE**
+   - Solução para erro 404 no upload de CSV
+   - Como verificar endpoints do backend
+   - Diagnóstico completo do backend no VPS
+   - **Leia isto se uploads estão dando erro 404!**
+
+3. **[Erro 400: redirect_uri_mismatch](./GOOGLE_OAUTH_REDIRECT_URI_FIX.md)** 🔴 **URGENTE**
+   - Solução para erro de OAuth com VPS
+   - Como adicionar origem no Google Cloud Console
+   - **Leia isto se está com erro 400 ao autenticar no Google!**
+
+4. **[Resolver Erro 403 AGORA](./RESOLVER_ERRO_403_AGORA.md)** ⚡ **URGENTE**
+   - Solução rápida para erro 403: access_denied
+   - 10 passos práticos com screenshots
+   - **Leia isto se está com erro de autorização Google!**
+
+5. **[Backend Fix Instructions](./BACKEND_FIX_INSTRUCTIONS.md)** ⭐ **IMPORTANTE**Problemas
+
+2. **[Erro 400: redirect_uri_mismatch](./GOOGLE_OAUTH_REDIRECT_URI_FIX.md)** 🔴 **URGENTE**
+   - Solução para erro de OAuth com VPS
+   - Como adicionar origem no Google Cloud Console
+   - **Leia isto se está com erro 400 ao autenticar no Google!**
+
+3. **[Resolver Erro 403 AGORA](./RESOLVER_ERRO_403_AGORA.md)** ⚡ **URGENTE**
+   - Solução rápida para erro 403: access_denied
+   - 10 passos práticos com screenshots
+   - **Leia isto se está com erro de autorização Google!**
+
+4. **[Backend Fix Instructions](./BACKEND_FIX_INSTRUCTIONS.md)** ⭐ **IMPORTANTE**nica - CSV Chat Flow
 
 Documentação completa do projeto, troubleshooting e guias de desenvolvimento.
 
@@ -42,13 +72,24 @@ Documentação completa do projeto, troubleshooting e guias de desenvolvimento.
 
 ### ⚙️ Configuração
 
-7. **[Port Detection](./PORT_DETECTION.md)** 🔄
+7. **[VPS API Setup](./VPS_API_SETUP.md)** 🌐 **NOVO**
+   - Configuração da API em VPS/servidor remoto
+   - Como conectar ao backend no http://srv774816.hstgr.cloud:8580
+   - Guia de HTTPS e segurança
+   - Troubleshooting de conexão
+
+8. **[Upload Timeout Fix](./UPLOAD_TIMEOUT_FIX.md)** ⏱️
+   - Correção de timeout em uploads grandes
+   - Aumento de timeout para 5 minutos
+   - Barra de progresso adicionada
+
+9. **[Port Detection](./PORT_DETECTION.md)** 🔄
    - Como funciona a detecção automática de porta
    - Configuração via variável de ambiente
    - Troubleshooting de conexão
    - Testes e validação
 
-8. **[Pasta Atualizada](./PASTA_ATUALIZADA.md)** 📁
+10. **[Pasta Atualizada](./PASTA_ATUALIZADA.md)** 📁
    - Informações sobre atualização do ID da pasta Google Drive
    - Novo folder ID e instruções
 
@@ -56,8 +97,20 @@ Documentação completa do projeto, troubleshooting e guias de desenvolvimento.
 
 ## 🎯 Guia Rápido por Problema
 
+### "Erro 404: Request failed with status code 404"
+→ Leia: **[Endpoint 404 Fix](./ENDPOINT_404_FIX.md)** 🔴
+
+### "Erro 400: redirect_uri_mismatch do Google"
+→ Leia: **[Google OAuth Redirect URI Fix](./GOOGLE_OAUTH_REDIRECT_URI_FIX.md)** 🔴
+
 ### "Erro 403: access_denied do Google Drive"
 → Leia: **[Resolver Erro 403 AGORA](./RESOLVER_ERRO_403_AGORA.md)** ⚡
+
+### "Timeout de 30 segundos no upload"
+→ Leia: **[Upload Timeout Fix](./UPLOAD_TIMEOUT_FIX.md)** ⏱️
+
+### "Conectar ao backend no VPS"
+→ Leia: **[VPS API Setup](./VPS_API_SETUP.md)** 🌐
 
 ### "Os agentes não estão analisando meus dados CSV"
 → Leia: **[Backend Fix Instructions](./BACKEND_FIX_INSTRUCTIONS.md)** e **[Why Agents Not Working](./WHY_AGENTS_NOT_WORKING.md)**

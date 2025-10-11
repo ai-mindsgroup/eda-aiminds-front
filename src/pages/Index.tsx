@@ -50,7 +50,7 @@ const Index = () => {
               <p className="text-white/90 text-lg">Análise Exploratória de Dados com IA</p>
             </div>
           </div>
-          <div className="flex justify-center items-center space-x-6 pt-4">
+          <div className="flex justify-center items-center space-x-6 pt-4 text-white/90">
             <HealthStatus />
             <div className="flex items-center space-x-2 text-white/90">
               <Zap className="h-5 w-5" />
@@ -140,7 +140,7 @@ const Index = () => {
                 </div>
                 {currentFileName && (
                   <div className="hidden lg:flex items-center space-x-2 bg-emerald-50 px-3 py-1 rounded-full">
-                    <span className="text-xs font-medium text-emerald-700">
+                    <span className="text-xs font-small text-emerald-700">
                       Ativo: {currentFileName}
                     </span>
                   </div>

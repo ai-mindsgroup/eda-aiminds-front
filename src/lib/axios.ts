@@ -83,7 +83,7 @@ detectBackendPort().then((url) => {
 
 const axiosInstance = axios.create({
   baseURL: initialBaseURL,
-  timeout: 30000,
+  timeout: 120000, // 2 minutos para uploads grandes
   headers: {
     'Content-Type': 'application/json',
   },

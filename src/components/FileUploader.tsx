@@ -85,13 +85,25 @@ const FileUploader = ({ onUploadSuccess }: FileUploaderProps) => {
     } catch (error) {
       console.error('Erro no upload:', error);
       let errorText = 'Tente novamente';
+      let errorTitle = 'Erro no upload';
+      
       if (isAxiosError(error)) {
-        errorText = error.response?.data?.detail || error.message;
+        if (error.code === 'ECONNABORTED') {
+          errorTitle = 'Tempo limite excedido';
+          errorText = 'O arquivo é muito grande ou o servidor está demorando muito. Tente um arquivo menor ou aguarde alguns minutos.';
+        } else if (error.code === 'ERR_NETWORK') {
+          errorTitle = 'Erro de conexão';
+          errorText = 'Não foi possível conectar ao servidor. Verifique se o backend está rodando.';
+        } else {
+          errorText = error.response?.data?.detail || error.message;
+        }
       } else if (error instanceof Error) {
         errorText = error.message;
       }
-      toast.error('Erro no upload', {
+      
+      toast.error(errorTitle, {
         description: errorText,
+        duration: 8000,
       });
       setUploadProgress('');
       setDriveUploadProgress(0);
