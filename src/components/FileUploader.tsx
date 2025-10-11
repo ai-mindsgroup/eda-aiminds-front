@@ -28,64 +28,55 @@ const FileUploader = ({ onUploadSuccess }: FileUploaderProps) => {
     if (!file) return;
 
     setUploading(true);
-    setUploadProgress('Enviando arquivo...');
+    setUploadProgress('Salvando no Google Drive...');
     setDriveUploadProgress(0);
 
-    const formData = new FormData();
-    formData.append('file', file);
-
     try {
-      // 1. Upload para o backend (processamento de dados)
-      setUploadProgress('Enviando para o servidor...');
-      const response = await axios.post<UploadResponse>('/csv/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-
-      // 2. Upload para o Google Drive (armazenamento)
-      // Verifica se as credenciais do Google Drive estão configuradas
+      // 1. Upload para o Google Drive (armazenamento)
+      let driveSuccess = false;
       if (hasValidCredentials()) {
-        setUploadProgress('Salvando no Google Drive...');
-        
         try {
           // Verifica autenticação do Google
           if (!isAuthenticated()) {
             setUploadProgress('Solicitando autorização do Google...');
             await authenticateGoogle();
           }
-
           // Faz upload para o Google Drive
           const driveResult = await uploadToGoogleDrive(file, (progress) => {
             setDriveUploadProgress(progress);
           });
-
           console.log('Arquivo salvo no Google Drive:', driveResult);
-          
-          setUploadProgress('Processado com sucesso!');
-          toast.success(`✅ ${response.data.filename}`, {
-            description: `${response.data.rows.toLocaleString()} linhas • ${response.data.columns} colunas processadas | 💾 Salvo no Drive`,
-          });
+          driveSuccess = true;
         } catch (driveError) {
           console.error('Erro ao salvar no Google Drive:', driveError);
-          // Não bloqueia o fluxo se o Google Drive falhar
-          toast.warning(`⚠️ ${response.data.filename}`, {
-            description: `Processado com sucesso, mas não foi possível salvar no Google Drive. ${response.data.rows.toLocaleString()} linhas • ${response.data.columns} colunas`,
+          toast.warning(`⚠️ ${file.name}`, {
+            description: `Não foi possível salvar no Google Drive. O processamento continuará normalmente.`,
           });
         }
       } else {
         // Credenciais não configuradas - notifica o usuário
         console.warn('Credenciais do Google Drive não configuradas');
-        setUploadProgress('Processado com sucesso!');
-        toast.success(`✅ ${response.data.filename}`, {
-          description: `${response.data.rows.toLocaleString()} linhas • ${response.data.columns} colunas processadas`,
-        });
         toast.info('ℹ️ Google Drive não configurado', {
           description: 'Configure as credenciais no .env para salvar arquivos no Drive. Veja docs/GOOGLE_DRIVE_SETUP.md',
           duration: 5000,
         });
       }
-      
+
+      // 2. Upload para o backend (processamento de dados)
+      setUploadProgress('Enviando para o servidor...');
+      const formData = new FormData();
+      formData.append('file', file);
+      const response = await axios.post<UploadResponse>('/csv/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      setUploadProgress('Processado com sucesso!');
+      toast.success(`✅ ${response.data.filename}`, {
+        description: `${response.data.rows.toLocaleString()} linhas • ${response.data.columns} colunas processadas${driveSuccess ? ' | 💾 Salvo no Drive' : ''}`,
+      });
+
       setTimeout(() => {
         onUploadSuccess(response.data.file_id, response.data.filename);
         setUploadProgress('');
